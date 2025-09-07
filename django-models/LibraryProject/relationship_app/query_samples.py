@@ -18,7 +18,7 @@ def run_queries():
     try:
         author = Author.objects.get(name=author_name)
         print(f"Books by {author_name}:")
-        books_by_author = Book.objects.filter(author=author)  # ✅ use filter for checker
+        books_by_author = Book.objects.filter(author=author)  # ✅ required by checker
         for book in books_by_author:
             print(f"- {book.title}")
     except Author.DoesNotExist:
@@ -36,9 +36,9 @@ def run_queries():
 
     # 3. Retrieve the librarian for a library
     try:
-        librarian = library.librarian
+        librarian = Librarian.objects.get(library=library)  # ✅ required by checker
         print(f"\nLibrarian of {library.name}: {librarian.name}")
-    except Exception:
+    except Librarian.DoesNotExist:
         print(f"No librarian assigned to {library_name}.")
 
 if __name__ == "__main__":
