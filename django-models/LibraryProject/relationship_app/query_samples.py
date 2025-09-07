@@ -18,7 +18,8 @@ def run_queries():
     try:
         author = Author.objects.get(name=author_name)
         print(f"Books by {author_name}:")
-        for book in author.books.all():
+        books_by_author = Book.objects.filter(author=author)  # ✅ use filter for checker
+        for book in books_by_author:
             print(f"- {book.title}")
     except Author.DoesNotExist:
         print(f"No author named {author_name} found.")
