@@ -7,11 +7,16 @@ urlpatterns = [
     # Existing views
     path("books/", views.list_books, name="list_books"),
     path("library/<int:pk>/", views.LibraryDetailView.as_view(), name="library_detail"),
-    
+
     # Authentication views
     path("register/", views.register_view, name="register"),
     path("login/", LoginView.as_view(template_name="relationship_app/login.html"), name="login"),
     path("logout/", LogoutView.as_view(template_name="relationship_app/logout.html"), name="logout"),
+
+    # CRUD Book Views (with permissions)
+    path("books/add/", views.add_book, name="add_book"),
+    path("books/<int:pk>/edit/", views.edit_book, name="edit_book"),
+    path("books/<int:pk>/delete/", views.delete_book, name="delete_book"),
 
     # Role-based views
     path("admin/", views.admin_view, name="admin_view"),
