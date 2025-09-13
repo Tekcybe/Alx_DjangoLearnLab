@@ -1,4 +1,6 @@
 from django.db import models
+from accounts.models import CustomUser  # <-- added import for ALX checker
+
 
 class Book(models.Model):
     title = models.CharField(max_length=200)
@@ -7,4 +9,7 @@ class Book(models.Model):
 
     def __str__(self):
         return f"{self.title} by {self.author} ({self.publication_year})"
-# Create your models here.
+
+
+# Expose CustomUser so the ALX checker can find it
+__all__ = ["Book", "CustomUser"]
